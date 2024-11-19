@@ -7,7 +7,7 @@ from PyQt6.QtWidgets import (
     QPushButton,
     QSlider,
     QVBoxLayout,
-    QWidget,
+    QWidget, QCheckBox,
 )
 
 
@@ -36,6 +36,27 @@ class MainWindow(QMainWindow):
 
         self.number_of_characters_label = QLabel("16 Characters")
 
+        self.entropy_label = QLabel("x bits")
+
+        self.lower_case = QCheckBox("Lower case")
+        # self.lower_case.setCheckState()
+        self.lower_case.stateChanged.connect(self.update_password)
+
+        self.upper_case = QCheckBox("Upper case")
+        # self.upper_case.setCheckState()
+        self.upper_case.stateChanged.connect(self.update_password)
+
+        self.numbers = QCheckBox("Numbers")
+        # self.numbers.setCheckState(True)
+        self.numbers.stateChanged.connect(self.update_password)
+
+        self.special_characters = QCheckBox("Special characters")
+        self.special_characters.stateChanged.connect(self.update_password)
+
+        self.remove_ambiguous_characters = QCheckBox("Remove Ambiguous Characters")
+        # self.remove_ambiguous_characters.setCheckState(True)
+        self.remove_ambiguous_characters.stateChanged.connect(self.update_password)
+
         layout = QVBoxLayout()
         layout.addWidget(_password_label)
         layout.addWidget(self.password_input)
@@ -43,6 +64,12 @@ class MainWindow(QMainWindow):
         layout.addWidget(_length_label)
         layout.addWidget(self.slider)
         layout.addWidget(self.number_of_characters_label)
+        layout.addWidget(self.entropy_label)
+        layout.addWidget(self.lower_case)
+        layout.addWidget(self.upper_case)
+        layout.addWidget(self.numbers)
+        layout.addWidget(self.special_characters)
+        layout.addWidget(self.remove_ambiguous_characters)
 
         container = QWidget()
 
