@@ -40,11 +40,15 @@ class MainWindow(QMainWindow):
 
         self.number_of_characters_label = QLabel()
         self.number_of_characters_label.setMinimumWidth(100)
-        self.number_of_characters_label.setAlignment(Qt.AlignmentFlag.AlignRight)
+        self.number_of_characters_label.setAlignment(
+            Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter
+        )
 
         self.entropy_label = QLabel()
         self.entropy_label.setMinimumWidth(70)
-        self.entropy_label.setAlignment(Qt.AlignmentFlag.AlignRight)
+        self.entropy_label.setAlignment(
+            Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter
+        )
 
         self.lower_case = QCheckBox("Lower case")
         self.lower_case.setChecked(True)
