@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "sesamegen"
+version = "2.0.0"
+description = "A simple efficent password generator"
+authors = ["Michael Van Delft <michael@xo.tc>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+pyqt6 = "^6.7.1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.10.0"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+ses = "sesamegen.gui:start_gui"
+
+[tool.isort]
+profile = "black"
+src_paths=["sesamegen"]
