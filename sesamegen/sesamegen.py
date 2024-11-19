@@ -37,7 +37,8 @@ def get_password(
     remove_ambiguous_characters=False,
 ):
     """
-    Return a password that meets the requirements and the amount of entropy those requirements provide
+    Return a password that meets the requirements and
+    the amount of entropy those requirements provide
     """
     character_set = []
 

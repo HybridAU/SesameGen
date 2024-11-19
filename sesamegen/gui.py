@@ -119,6 +119,3 @@ def start_gui():
     window = MainWindow()
     window.show()
     app.exec()
-
-
-start_gui()
