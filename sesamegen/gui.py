@@ -2,6 +2,7 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (
     QApplication,
     QCheckBox,
+    QHBoxLayout,
     QLabel,
     QLineEdit,
     QMainWindow,
@@ -37,9 +38,13 @@ class MainWindow(QMainWindow):
         self.slider.setValue(16)
         self.slider.valueChanged.connect(self.update_password)
 
-        self.number_of_characters_label = QLabel("16 Characters")
+        self.number_of_characters_label = QLabel()
+        self.number_of_characters_label.setMinimumWidth(100)
+        self.number_of_characters_label.setAlignment(Qt.AlignmentFlag.AlignRight)
 
-        self.entropy_label = QLabel("x bits")
+        self.entropy_label = QLabel()
+        self.entropy_label.setMinimumWidth(70)
+        self.entropy_label.setAlignment(Qt.AlignmentFlag.AlignRight)
 
         self.lower_case = QCheckBox("Lower case")
         self.lower_case.setChecked(True)
@@ -61,18 +66,28 @@ class MainWindow(QMainWindow):
         self.remove_ambiguous_characters.stateChanged.connect(self.update_password)
 
         layout = QVBoxLayout()
-        layout.addWidget(_password_label)
-        layout.addWidget(self.password_input)
-        layout.addWidget(_regenerate_button)
-        layout.addWidget(_length_label)
-        layout.addWidget(self.slider)
-        layout.addWidget(self.number_of_characters_label)
-        layout.addWidget(self.entropy_label)
-        layout.addWidget(self.lower_case)
-        layout.addWidget(self.upper_case)
-        layout.addWidget(self.numbers)
-        layout.addWidget(self.special_characters)
-        layout.addWidget(self.remove_ambiguous_characters)
+
+        password_row = QHBoxLayout()
+        password_row.addWidget(_password_label)
+        password_row.addWidget(self.password_input)
+        password_row.addWidget(_regenerate_button)
+
+        slider_row = QHBoxLayout()
+        slider_row.addWidget(_length_label)
+        slider_row.addWidget(self.slider)
+        slider_row.addWidget(self.number_of_characters_label)
+        slider_row.addWidget(self.entropy_label)
+
+        checkbox_row = QHBoxLayout()
+        checkbox_row.addWidget(self.lower_case)
+        checkbox_row.addWidget(self.upper_case)
+        checkbox_row.addWidget(self.numbers)
+        checkbox_row.addWidget(self.special_characters)
+        checkbox_row.addWidget(self.remove_ambiguous_characters)
+
+        layout.addLayout(password_row)
+        layout.addLayout(slider_row)
+        layout.addLayout(checkbox_row)
 
         self.update_password()
 
