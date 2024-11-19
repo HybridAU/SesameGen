@@ -1,14 +1,17 @@
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (
     QApplication,
+    QCheckBox,
     QLabel,
     QLineEdit,
     QMainWindow,
     QPushButton,
     QSlider,
     QVBoxLayout,
-    QWidget, QCheckBox,
+    QWidget,
 )
+
+from sesamegen import get_password
 
 
 class MainWindow(QMainWindow):
@@ -39,22 +42,22 @@ class MainWindow(QMainWindow):
         self.entropy_label = QLabel("x bits")
 
         self.lower_case = QCheckBox("Lower case")
-        # self.lower_case.setCheckState()
+        self.lower_case.setChecked(True)
         self.lower_case.stateChanged.connect(self.update_password)
 
         self.upper_case = QCheckBox("Upper case")
-        # self.upper_case.setCheckState()
+        self.upper_case.setChecked(True)
         self.upper_case.stateChanged.connect(self.update_password)
 
         self.numbers = QCheckBox("Numbers")
-        # self.numbers.setCheckState(True)
+        self.numbers.setChecked(True)
         self.numbers.stateChanged.connect(self.update_password)
 
         self.special_characters = QCheckBox("Special characters")
         self.special_characters.stateChanged.connect(self.update_password)
 
         self.remove_ambiguous_characters = QCheckBox("Remove Ambiguous Characters")
-        # self.remove_ambiguous_characters.setCheckState(True)
+        self.remove_ambiguous_characters.setChecked(True)
         self.remove_ambiguous_characters.stateChanged.connect(self.update_password)
 
         layout = QVBoxLayout()
@@ -71,15 +74,25 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.special_characters)
         layout.addWidget(self.remove_ambiguous_characters)
 
+        self.update_password()
+
         container = QWidget()
-
         container.setLayout(layout)
-
         # Set the central widget of the Window.
         self.setCentralWidget(container)
 
     def update_password(self):
         self.number_of_characters_label.setText(f"{self.slider.value()} Characters")
+        new_password = get_password(
+            length=self.slider.value(),
+            lower_case=self.lower_case.checkState().value,
+            upper_case=self.upper_case.checkState().value,
+            numbers=self.numbers.checkState().value,
+            special_characters=self.special_characters.checkState().value,
+            remove_ambiguous_characters=self.remove_ambiguous_characters.checkState().value,
+        )
+        self.password_input.setText(new_password["password"])
+        self.entropy_label.setText(f"{new_password['entropy']} bits")
 
 
 def start_gui():
