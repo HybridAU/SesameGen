@@ -7,7 +7,7 @@ SesameGen is just another password generator.
  * Simple
  * Does what it says on the tin.
 
-![SesameGen Screenshot](./SesameGen.png?raw=true)
+![SesameGen Screenshot](./images/screenshot.png?raw=true)
  
 ## Why use SesameGen?
 

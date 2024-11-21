@@ -1,3 +1,6 @@
+from pathlib import Path
+
+from PyQt6 import QtGui
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (
     QApplication,
@@ -20,6 +23,8 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         self.setWindowTitle("SesameGen")
+        _icon_location = Path(Path(__file__).resolve().parent.parent, "images/icon.png")
+        self.setWindowIcon(QtGui.QIcon(str(_icon_location)))
 
         _password_label = QLabel("Password")
 
@@ -119,3 +124,7 @@ def start_gui():
     window = MainWindow()
     window.show()
     app.exec()
+
+
+if __name__ == "__main__":
+    start_gui()
