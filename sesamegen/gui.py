@@ -15,7 +15,7 @@ from PyQt6.QtWidgets import (
     QWidget,
 )
 
-from sesamegen import get_password
+from sesamegen.generator import get_password
 
 
 class MainWindow(QMainWindow):
@@ -124,7 +124,3 @@ def start_gui():
     window = MainWindow()
     window.show()
     app.exec()
-
-
-if __name__ == "__main__":
-    start_gui()
