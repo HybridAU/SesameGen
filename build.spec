@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['sesamegen/gui.py'],
+    ['sesamegen/__main__.py'],
     pathex=[],
     binaries=[],
     datas=[],

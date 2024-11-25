@@ -1,27 +1,46 @@
-[tool.poetry]
+[project]
 name = "sesamegen"
 version = "2.0.0"
 description = "A simple efficent password generator"
-authors = ["Michael Van Delft <michael@xo.tc>"]
+author = "Michael Van Delft <michael@xo.tc>"
 license = "MIT"
 readme = "README.md"
+requires-python = ">=3.11"
 
-[tool.poetry.dependencies]
-python = ">=3.11,<3.14"
-pyqt6 = "^6.7.1"
+dependencies = [
+    "pyqt6>=6.7.1",
+    "typer>=0.13.1",
+]
 
+[dependency-groups]
+dev = [
+    "pyinstaller>=6.11.1",
+    "ruff>=0.8.0",
+]
 
-[tool.poetry.group.dev.dependencies]
-ruff = "^0.7.4"
-pyinstaller = "^6.11.1"
+[project.scripts]
+sesamegen = "sesamegen.__main__:run"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
-[tool.isort]
-profile = "black"
-src_paths=["sesamegen"]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.ruff.lint]
-select = ["E", "F", "I"]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # flake8-bandit
+    "S",
+    # isort
+    "I",
+    # pep8-naming
+    "N"
+]
