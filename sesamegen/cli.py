@@ -3,7 +3,17 @@ from typing import Annotated
 import typer
 
 from sesamegen.generator import get_password
-from sesamegen.gui import start_gui
+
+try:
+    from sesamegen.gui import start_gui
+except ImportError:
+    # Can't import PyQt6
+    def start_gui():
+        print(
+            "Failed to import PyQt. "
+            "Possibly running in headless environment GUI will be unable to start."
+        )
+
 
 app = typer.Typer()
 

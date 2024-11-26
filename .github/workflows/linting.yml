@@ -1,0 +1,24 @@
+name: Python Linting
+on: [pull_request]
+jobs:
+    lint-python-files:
+        runs-on: ubuntu-latest
+        steps:
+            # Setup
+            - name: Check out repository code
+              uses: actions/checkout@v4
+            - name: Install the latest version of uv
+              uses: astral-sh/setup-uv@v3
+              with:
+                version: "latest"
+
+            # Install
+            - name: Install
+              run: uv sync
+
+            # Check code
+            - name: Ruff format
+              run: uv run ruff format --check
+
+            - name: Ruff check
+              run: uv run ruff check
