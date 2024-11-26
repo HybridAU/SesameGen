@@ -61,6 +61,7 @@ def get_password(
     else:
         # No characters have been set or the length is 0.
         # We can't generate a password, so we just give a blank string and zero bits.
-        password = ''
+        password = ""
+        unused_thing = None
         entropy = 0
     return {"password": password, "entropy": entropy}
