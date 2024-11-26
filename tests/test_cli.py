@@ -30,5 +30,5 @@ def test_app_with_only_numbers():
     result = runner.invoke(app, ["--special"])
     assert result.exit_code == 0
     # A password with only special characters, no lower, upper or numbers
-    only_numbers_regex = re.compile(r"{'password': '[^a-zA-Z0-9]*', 'entropy': 80\.0}")
+    only_numbers_regex = re.compile(r"""{'password': (['"])[^a-zA-Z0-9]*(['"]), 'entropy': 80\.0}""")
     assert only_numbers_regex.match(result.stdout) is not None
