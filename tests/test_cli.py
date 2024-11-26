@@ -16,10 +16,7 @@ def test_app_with_zero_length():
 def test_app_with_no_characters():
     result = runner.invoke(app, ["16", "--remove"])
     assert result.exit_code == 0
-    assert (
-        "{'password': '', 'entropy': Break Test to prove broken tests will fail PR}"
-        in result.stdout
-    )
+    assert "{'password': '', 'entropy': 0}" in result.stdout
 
 
 def test_app_with_default_settings():
