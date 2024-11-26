@@ -7,14 +7,12 @@ from sesamegen.generator import get_password
 try:
     from sesamegen.gui import start_gui
 except ImportError:
-    error_message = (
-        "Failed to import PyQt. "
-        "Possibly running in headless environment GUI will be unable to start."
-    )
-    print(error_message)
-
+    # Can't import PyQt6
     def start_gui():
-        print(error_message)
+        print(
+            "Failed to import PyQt. "
+            "Possibly running in headless environment GUI will be unable to start."
+        )
 
 
 app = typer.Typer()
