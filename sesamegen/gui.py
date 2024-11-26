@@ -1,6 +1,12 @@
 from pathlib import Path
 
-from PyQt6 import QtGui
+try:
+    from PyQt6 import QtGui
+except ImportError:
+    print(
+        "Failed to import PyQt. "
+        "Possibly running in headless environment GUI will be unable to start."
+    )
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (
     QApplication,
