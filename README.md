@@ -1,14 +1,64 @@
 # SesameGen
 
-SesameGen is just another password generator.
+SesameGen is a password generator that uses the [secrets](https://docs.python.org/3/library/secrets.html) 
+module to pick secure random passwords.
 
- * Uses the [secrets](https://docs.python.org/3/library/secrets.html) module to pick secure random passwords.
  * Fast
  * Simple
  * Does what it says on the tin.
 
+## Usage
+Starting SesameGen with the `--gui` flag opens a nice GUI password generator
+
+```shell
+sesamegen --gui
+```
+
 ![SesameGen Screenshot](./images/screenshot.png?raw=true)
- 
+
+Running SesameGen with no arguments will generate a password that is 16 characters,
+using lower case, upper case, numbers, and removing ambiguous characters.
+
+```shell
+sesamegen
+# {'password': 'aaaaaAAAAA222222', 'entropy': 85.7}
+```
+
+
+### Arguments and options
+* length  Length of the password to generate default: 16
+* `--gui ` Show the graphical user interface (GUI). When this option is set, all other options are ignored as they are set in the GUI itself.
+* `--lower` `-l` Include lower case characters
+* `--upper` `-u` Include upper case characters
+* `--numbers` `-n` Include numbers
+* `--special` `-s` Include special characters
+* `--remove` `-r` Remove ambiguous characters 
+* `--install-completion` Install completion for the current shell.
+* `--help` show help
+
+### Examples
+```shell
+sesamegen --numbers 6
+# {'password': '123456', 'entropy': 19.9}
+```
+
+```shell
+sesamegen --lower
+# {'password': 'abcdefghijklmnop', 'entropy': 75.2}
+```
+
+```shell
+sesamegen -u 26
+# {'password': 'ABCDEFGHIJKLMNOPQRZTUVWXYZ', 'entropy': 122.2}
+```
+
+The following are all equivalent
+```shell
+sesamegen  # Defaults when there are no arguments
+sesamegen --lower --upper --numbers --remove 16
+sesamegen 16 -lunr
+```
+
 ## Why use SesameGen?
 
 There are lots of password generators out there and many more features than
