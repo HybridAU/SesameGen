@@ -67,8 +67,8 @@ SesameGen, so why one more? I wrote it because I wanted two things.
 ### A lightweight tool which generates passwords as soon it starts
 
 I think the password generator in KeePassX for example is great, but
-at the time I wrote SesameGen, you couldn't access the generator until
-you have opened your database.
+at the time I wrote SesameGen, you couldn't access the KeePassX generator
+until you have opened your database which always felt like a hassle.
 
 The one in LastPass is also good but again is hidden under layers
 of menus. Or if you use the 
