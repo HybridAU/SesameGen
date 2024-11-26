@@ -2,24 +2,24 @@ from pathlib import Path
 
 try:
     from PyQt6 import QtGui
+    from PyQt6.QtCore import Qt
+    from PyQt6.QtWidgets import (
+        QApplication,
+        QCheckBox,
+        QHBoxLayout,
+        QLabel,
+        QLineEdit,
+        QMainWindow,
+        QPushButton,
+        QSlider,
+        QVBoxLayout,
+        QWidget,
+    )
 except ImportError:
     print(
         "Failed to import PyQt. "
         "Possibly running in headless environment GUI will be unable to start."
     )
-from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import (
-    QApplication,
-    QCheckBox,
-    QHBoxLayout,
-    QLabel,
-    QLineEdit,
-    QMainWindow,
-    QPushButton,
-    QSlider,
-    QVBoxLayout,
-    QWidget,
-)
 
 from sesamegen.generator import get_password
 
