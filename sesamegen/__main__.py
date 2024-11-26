@@ -1,11 +1,4 @@
-import typer
-
-from sesamegen.cli import main
-
-
-def run():
-    typer.run(main)
-
+from sesamegen.cli import app
 
 if __name__ == "__main__":
-    run()
+    app()

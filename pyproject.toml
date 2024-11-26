@@ -19,7 +19,7 @@ dev = [
 ]
 
 [project.scripts]
-sesamegen = "sesamegen.__main__:run"
+sesamegen = "sesamegen.cli:app"
 
 [build-system]
 requires = ["hatchling"]

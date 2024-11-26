@@ -34,7 +34,7 @@ def get_password(
     upper_case=True,
     numbers=True,
     special_characters=False,
-    remove_ambiguous_characters=False,
+    remove_ambiguous_characters=True,
 ):
     """
     Return a password that meets the requirements and
